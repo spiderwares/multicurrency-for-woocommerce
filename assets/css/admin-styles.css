@@ -1,0 +1,422 @@
+.jthemes_page .card {
+    border-color: #eee;
+    max-width: 100%;
+}
+
+.jthemes_settings_page .jthemes_settings_page_nav .nav-tab-wrapper {
+    border-color: #eee;
+}
+
+.jthemes_settings_page .jthemes_settings_page_nav .nav-tab-wrapper a.nav-tab-active,
+.jthemes_settings_page .jthemes_settings_page_nav .nav-tab-wrapper a:hover {
+    background-color: #fafafa;
+    border-color: #fafafa;
+}
+
+.jthemes_settings_page .jthemes_settings_page_nav .nav-tab-wrapper a {
+    display: flex;
+    gap: 10px;
+    margin-left: 0;
+    margin-right: 7px;
+    padding: 10px 20px;
+    outline: none;
+    box-shadow: none;
+    border-color: #eee;
+    background-color: #e5e5e5;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content {
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #eee;
+    background-color: #fff;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table tr.heading {
+    border-bottom: 1px dashed #eeeeee;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table tr.heading th,
+.jthemes_settings_page .jthemes_settings_page_content table tr th.mcwctitle {
+    border-left: 4px solid black;
+    font-size: 16px;
+    padding: 12px 18px;
+    background-color: #babae729;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: unset;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table tr th,
+.jthemes_settings_page .jthemes_settings_page_content table tr td {
+    padding: 15px 20px;
+    border-bottom: 1px dashed #eee;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table tr.submit p {
+    margin: 0;
+    padding: 0;
+}
+
+.jthemes_page.jthemes_settings_page.wrap .jthemes_settings_page_nav a.nav-tab{
+    font-size: 16px;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table tr:last-child th,
+.jthemes_settings_page .jthemes_settings_page_content table tr:last-child td {
+    border-bottom: none;
+}
+
+/*--------------------------- Start Switch Field ------------------------------*/
+
+.mcwc-switch-field {
+    display: flex;
+    align-items: center;
+}
+
+.mcwc-switch-field input {
+    display: none;
+}
+
+.mcwc-switch-field label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 27px;
+    background-color: #e2e8f0;
+    border-radius: 33px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mcwc-switch-field input:checked + label {
+    background-color: #7f54b3;
+}
+
+.mcwc-switch-field label::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 23px;
+    height: 23px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mcwc-switch-field input:checked + label::before {
+    transform: translateX(20px);
+}
+
+.mcwc-switch-field .mcwc-switch-icon {
+    position: relative;
+    top: 50%;
+    left: 74%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.mcwc-switch-field .mcwc-icon-on,
+.mcwc-switch-field .mcwc-icon-off {
+    width: 14px;
+    height: 15px;
+}
+
+.mcwc-switch-field input:checked + label .mcwc-icon-on {
+    display: block;
+}
+
+.mcwc-switch-field input:not(:checked) + label .mcwc-icon-off {
+    display: block;
+    left: -6.5px;
+}
+
+.mcwc-switch-field input:not(:checked) + label::before { 
+    left: 2px;
+}
+
+.mcwc-switch-field input:not(:checked) + label .mcwc-icon-on {
+    display: none;
+}
+
+.mcwc-switch-field input:checked + label .mcwc-icon-off {
+    display: none;
+}
+
+
+.mcwc-switch-field svg.mcwc-icon-off {
+    position: absolute;
+    left: -11%;
+}
+
+.mcwc-switch-field .mcwc-switch-icon svg {
+    stroke: #94a3b8;
+    stroke-width: 2;
+}
+
+.mcwc-switch-field .mcwc-switch-icon .mcwc-icon-on {
+    stroke: #7f54b3;
+}
+
+/*--------------------------- End Switch Field ------------------------------*/
+
+.mcwc-input-group input[type="text"],
+.mcwc-input-group button.mcwc-remove-field,
+#mcwc_add_field{
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+#product_compare_style option:disabled {
+    background-color: #f2f2f2;
+    color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.mcwc_admin_settings_page .mcwc_admin_settings_page_content table tr th.mcwctitle {
+    font-size: 22px;
+    padding-top: 35px;
+}
+
+.mcwc-size-field {
+    display: flex;
+    gap: 20px;
+}
+
+.mcwc-select-field select,
+.mcwc-number-field input[type="number"],
+.mcwc-text-field input[type="text"] {
+    min-width: 350px;
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+.mcwc-size-field input[type="number"] {
+    padding: 3px 10px;
+    border-radius: 2px;
+    max-width: 163px;
+}
+
+.mcwc-description-box {
+    margin-top: 14px;
+    padding: 8px 15px;
+    border: 1px solid #c9356e;
+    border-radius: 5px;
+    background-color: #ffd6e6;
+    color: #3e3d3b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+
+.jthemes_settings_page .jthemes_settings_page_content table.mcwc-repeater-table td,
+.jthemes_settings_page .jthemes_settings_page_content table.mcwc-repeater-table th{
+    padding: 10px 8px;
+}
+
+.jthemes_settings_page .jthemes_settings_page_content table.mcwc-repeater-table button.mcwc-remove-repeater-row {
+    background-color: unset;
+    border: none;
+    outline: unset;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.mcwc-admin-button{
+    height: 40px;
+    line-height: 36px;
+    padding: 0 20px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    transition: all linear .1s;
+    overflow: hidden;
+    background-color: transparent;
+    display: inline;
+    cursor: pointer;
+}
+
+.mcwc-add-repeater-row{
+    border: 2px solid #222222;
+    background-color: #222222;
+    color: #EEEEEE;
+    margin-left: 10px;
+}
+
+.mcwc-add-repeater-row:hover{
+    border: 2px solid #222222;
+    color: #222222;
+    background-color: transparent;
+}
+
+button.mcwc-update-all-rates,
+.mcwc-select-all-countries {
+    border: 2px solid #33CAB3;
+    color: #33CAB3;
+}
+
+button.mcwc-update-all-rates:hover,
+.mcwc-select-all-countries:hover {
+    border: 2px solid #33CAB3;
+    background-color: #33CAB3;
+    color: #EEEEEE;
+}
+
+
+.mcwc-remove-all-countries {
+    border: 2px solid #b71020;
+    color: #b71020;
+    margin-left: 5px;
+}
+
+.mcwc-remove-all-countries:hover {
+    border: 2px solid #b71020;
+    background-color: #b71020;
+    color: #EEEEEE;
+}
+
+.mcwc-currency-by-country-action{
+    width: 230px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+}
+
+tbody.mcwc-repeater-body.ui-sortable td {
+    cursor: move;
+}
+
+td.mcwc_currency_options_actions.mcwc-loading .mcwc-spinner {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/*----------------- Setting Field Radio Button ----------------------*/
+
+.mcwc_currency_default .mcwc_toggle_checkbox,
+.mcwc-default-currency {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+}
+
+.mcwc_currency_default .mcwc_toggle_checkbox:checked,
+.mcwc-default-currency:checked {
+    border-color: #007cba;
+    background-color: #007cba;
+}
+
+.mcwc_currency_default .mcwc_toggle_checkbox:checked::after,
+.mcwc-default-currency:checked::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+
+/*----------------------- End -----------------------------*/
+
+.mcwc-full-width{
+    width: 100%;
+}
+
+th.mcwc-center,
+td.mcwc-center,
+.mcwc-center{
+    text-align: center !important;
+}
+
+/*------------------------- Admin Loader -----------------------------*/
+
+
+.mcwc-spinner{
+    display: none;
+}
+
+
+button.mcwc-update-all-rates.mcwc-loading {
+    position: relative;
+    cursor: default;
+    text-shadow: none !important;
+    color: transparent !important;
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-transition: all 0s linear, opacity .1s ease;
+    transition: all 0s linear, opacity .1s ease;
+}
+
+button.mcwc-loading:before,
+button.mcwc-loading:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    margin: -.64285714em 0 0 -.64285714em;
+    width: 1.28571429em;
+    height: 1.28571429em;
+    border-radius: 500rem;
+}
+
+/* Background circle */
+button.mcwc-loading:before {
+    border: .2em solid rgba(0, 0, 0, 0.15);
+}
+
+/* Spinner arc */
+button.mcwc-loading:after {
+    animation: button-spin 0.6s linear infinite;
+    border: 0.2em solid #fff;
+    border-color: #fff transparent transparent;
+    box-shadow: 0 0 0 1px transparent;
+}
+
+@keyframes button-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.mcwc-error{
+    color: red;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.mcwc-currency-by-country .select2-container{
+    width: 100% !important;
+    min-width: 650px;
+}
+
+.mcwc_checkout_currency .select2-container{
+    width: 100%;
+    min-width: 250px;
+}

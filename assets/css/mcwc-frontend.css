@@ -1,0 +1,164 @@
+.mcwc-currency-switcher-sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    background-color: #fff;
+    border-left: 2px solid #ddd;
+    padding: 12px 16px;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transform: translateY(-50%);
+    font-family: Arial, sans-serif;
+    min-width: 180px;
+}
+
+.mcwc-currency-switcher-sidebar label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.mcwc-currency-select {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/*****************************************************************/
+
+.mcwc-sidebar {
+    position: fixed;
+    z-index: 9999999999;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.25s ease;
+}
+
+.mcwc-sidebar .mcwc-title {
+    text-align: center;
+    visibility: hidden;
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    text-transform: uppercase;
+    background: #000;
+    width: 180px;
+    padding: 16px 0;
+    transition: all 0.25s ease;
+}
+
+.mcwc-sidebar.mcwc-hover .mcwc-title,
+.mcwc-sidebar.mcwc-hover .mcwc-currency {
+    display: block !important;
+    visibility: visible;
+}
+
+.mcwc-sidebar .mcwc-list-currencies {
+    width: 180px;
+    display: inline-block;
+    font-size: 0;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency {
+    background: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 180px;
+    font-size: 10px;
+    margin: 2px 0 0;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    clear: both;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency-symbol{
+    font-size: 12px;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency:hover {
+    background: #f78080;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency span:not(.mcwc-active-title),
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency a,
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency span.mcwc-active-title {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency span:not(.mcwc-active-title) {
+    width: 62px;
+    vertical-align: top;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency a,
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency span.mcwc-active-title {
+    width: 180px;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+.mcwc-sidebar .mcwc-list-currencies .mcwc-currency.mcwc-active {
+    background: #f78080;
+}
+
+.mcwc-sidebar.mcwc-left {
+    left: -120px;
+}
+
+.mcwc-sidebar.mcwc-right {
+    right: -120px;
+}
+
+.mcwc-sidebar.mcwc-left:hover {
+    left: 0;
+}
+
+.mcwc-sidebar.mcwc-right:hover {
+    right: 0;
+}
+
+.mcwc-sidebar:hover .mcwc-title{
+    visibility: unset;
+}
+
+.mcwc-sidebar.mcwc-left .mcwc-list-currencies .mcwc-currency {
+    text-align: right;
+}
+
+.mcwc-sidebar.mcwc-left .mcwc-list-currencies .mcwc-currency span {
+    float: right;
+}
+
+.mcwc-currency .fi {
+    margin-right: 6px;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+
+/*************************************************************/
+
+.mcwc-currency-symbol-style.mcwc-sidebar .mcwc-list-currencies .mcwc-currency-symbol{
+    font-size:16px;
+}
+
+.mcwc-currency-symbol-style.mcwc-sidebar .mcwc-currency {
+    border-radius: 8px;
+}
+
+.mcwc-right.mcwc-currency-symbol-style.mcwc-bottom.mcwc-sidebar {
+    right: -135px;
+}
