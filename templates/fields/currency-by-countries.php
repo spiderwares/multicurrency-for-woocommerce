@@ -1,4 +1,4 @@
-<td colspan="2">
+<td colspan="2" style="padding:0;">
     <table class="mcwc-table mcwc-currency-by-country">
         <thead>
         <tr>

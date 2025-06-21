@@ -117,20 +117,20 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'default'       => 'no',
                 ),
 
-                'geo_api' => array(
-                    'title'      => esc_html__( 'Geo API', 'multicurrency-for-woocommerce' ),
-                    'field_type' => 'mcwcselect',
-                    'name'       => 'mcwc_settings[geo_api]',
-                    'default'    => 'no',
-                    'options'    => array(
-                        'woocommerce'       => esc_html__( 'WooCommerce', 'multicurrency-for-woocommerce' ),
-                        'external'          => esc_html__( 'External', 'multicurrency-for-woocommerce' ),
-                        'polylang'          => esc_html__( 'Inherited from server (Premium)', 'multicurrency-for-woocommerce' ),
-                        'TranslatePress'    => esc_html__( 'MaxMind Geolocation (Premium)', 'multicurrency-for-woocommerce' ),
-                    ),
-                    'desc'              => esc_html__( 'API will help detect customer country code base on IP address.', 'multicurrency-for-woocommerce' ),
-                    'disabled_options'  => array('polylang', 'TranslatePress',),
-                ),
+                // 'geo_api' => array(
+                //     'title'      => esc_html__( 'Geo API', 'multicurrency-for-woocommerce' ),
+                //     'field_type' => 'mcwcselect',
+                //     'name'       => 'mcwc_settings[geo_api]',
+                //     'default'    => 'no',
+                //     'options'    => array(
+                //         'woocommerce'       => esc_html__( 'WooCommerce', 'multicurrency-for-woocommerce' ),
+                //         'external'          => esc_html__( 'External', 'multicurrency-for-woocommerce' ),
+                //         'polylang'          => esc_html__( 'Inherited from server (Premium)', 'multicurrency-for-woocommerce' ),
+                //         'TranslatePress'    => esc_html__( 'MaxMind Geolocation (Premium)', 'multicurrency-for-woocommerce' ),
+                //     ),
+                //     'desc'              => esc_html__( 'API will help detect customer country code base on IP address.', 'multicurrency-for-woocommerce' ),
+                //     'disabled_options'  => array('polylang', 'TranslatePress',),
+                // ),
 
                 'currency_by_country'   => array(
                     'title'         => esc_html__( 'Currency by Country', 'multicurrency-for-woocommerce' ),

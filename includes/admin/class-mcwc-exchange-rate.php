@@ -76,7 +76,7 @@ if ( ! class_exists( 'MCWC_Exchange_Rate' ) ) :
 			$selected_api = $this->fetch_finance_api();
 			$rates_data   = [];
 
-			switch ( $selected_api ) {
+			switch ( $selected_api ) :
 				case 'google':
 					$rates_data = $this->fetch_google_exchange_rates( $default_currency, $other_currencies );
 					break;
@@ -110,7 +110,7 @@ if ( ! class_exists( 'MCWC_Exchange_Rate' ) ) :
 						$this
 					);
 					break;
-			}
+			endswitch;
 
 			if ( empty( $rates_data ) || ! is_array( $rates_data ) ) :
 				wp_send_json_error( [ 'message' => 'Failed to retrieve exchange rates' ] );
@@ -133,7 +133,7 @@ if ( ! class_exists( 'MCWC_Exchange_Rate' ) ) :
 		 *
 		 * @return array|bool
 		 */
-		private function fetch_google_exchange_rates( $default_currency, $other_currencys ) {
+		public function fetch_google_exchange_rates( $default_currency, $other_currencys ) {
 			
 			require_once MCWC_PATH . 'includes/static/currency-country-map.php';	
 			$currency_rates = [];
