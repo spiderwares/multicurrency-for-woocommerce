@@ -125,6 +125,21 @@ if ( ! class_exists( 'MCWC' ) ) :
             require_once MCWC_PATH . 'includes/public/class-mcwc-single-page-switcher.php';
         }
 
+        /**
+         * Execute function on plugin activation
+         */
+        public static function activate() {
+
+            $defaultOptions = require_once MCWC_PATH . 'includes/static/default-option.php';
+            // Get the existing option value
+            $existingOption = get_option( 'mcwc_settings' );
+            // If the option is not set, update it with the default value
+            if ( ! $existingOption ) :
+                update_option( 'mcwc_settings', $defaultOptions );
+            endif;
+        
+        }
+
     }
 
 endif;

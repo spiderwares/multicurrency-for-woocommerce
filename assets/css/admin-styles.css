@@ -74,6 +74,28 @@
     border-bottom: none;
 }
 
+h2.mcwc-title {
+    font-size: 21px;
+}
+
+.mcwc-response-message{
+    display: none;
+}
+
+.mcwc-variation-field-wrapper{
+    display: flex;
+    gap: 45px;
+    width: 100%;
+}
+
+.mcwc-variation-field-wrapper input{
+    width: 100% !important;
+}
+
+.mcwc-variation-field-wrapper p.form-field{
+    flex: 1;
+}
+
 /*--------------------------- Start Switch Field ------------------------------*/
 
 .mcwc-switch-field {
@@ -211,7 +233,7 @@
 }
 
 .mcwc-description-box {
-    margin-top: 14px;
+    max-width: 760px;
     padding: 8px 15px;
     border: 1px solid #c9356e;
     border-radius: 5px;

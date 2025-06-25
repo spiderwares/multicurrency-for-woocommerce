@@ -6,6 +6,7 @@ endif;
 if ( ! class_exists( 'MCWC_Simple_Product_Metabox' ) ) :
 
 	class MCWC_Simple_Product_Metabox {
+
 		protected $settings;
 
 		public function __construct() {
@@ -39,13 +40,13 @@ if ( ! class_exists( 'MCWC_Simple_Product_Metabox' ) ) :
 				<div>
 					<p class="form-field">
 						<label for="_regular_price_mcwc_<?php echo esc_attr( $currency['currency'] ); ?>">
-							<?php echo esc_html__( 'Regular Price', 'multi-currency-woocommerce' ) . ' (' . esc_html( $currency['currency'] ) . ')'; ?>
+							<?php echo esc_html__( 'Regular Price', 'multicurrency-for-woocommerce' ) . ' (' . esc_html( $currency['currency'] ) . ')'; ?>
 						</label>
 						<input type="text" class="short wc_input_price" name="_regular_price_mcwc[<?php echo esc_attr( $currency['currency'] ); ?>]" value="<?php echo esc_attr( isset( $regular_price[ $currency['currency'] ] ) ? $regular_price[ $currency['currency'] ] : '' ); ?>">
 					</p>
 					<p class="form-field">
 						<label for="_sale_price_mcwc_<?php echo esc_attr( $currency['currency'] ); ?>">
-							<?php echo esc_html__( 'Sale Price', 'multi-currency-woocommerce' ) . ' (' . esc_html( $currency['currency'] ) . ')'; ?>
+							<?php echo esc_html__( 'Sale Price', 'multicurrency-for-woocommerce' ) . ' (' . esc_html( $currency['currency'] ) . ')'; ?>
 						</label>
 						<input type="text" class="short wc_input_price" name="_sale_price_mcwc[<?php echo esc_attr( $currency['currency'] ); ?>]" value="<?php echo esc_attr( isset( $sale_price[ $currency['currency'] ] ) ? $sale_price[ $currency['currency'] ] : '' ); ?>">
 					</p>
@@ -54,9 +55,6 @@ if ( ! class_exists( 'MCWC_Simple_Product_Metabox' ) ) :
 			endforeach;
 			wp_nonce_field( 'mcwc_save_simple_price', '_mcwc_nonce' );
 		}
-
-		
-		
 
         public function save_simple_product_prices( $post_id ) {
             // Permission and nonce check
@@ -93,6 +91,7 @@ if ( ! class_exists( 'MCWC_Simple_Product_Metabox' ) ) :
 		private function decode_price_meta( $meta ) {
 			return is_string( $meta ) ? json_decode( $meta, true ) : $meta;
 		}
+		
 	}
 
 	new MCWC_Simple_Product_Metabox();

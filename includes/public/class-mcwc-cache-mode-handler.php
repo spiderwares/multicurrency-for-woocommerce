@@ -65,7 +65,7 @@ class MCWC_Cache_Mode_Handler {
     }
 
     public function handle_ajax_price_update() {
-        $currency = sanitize_text_field( $_POST['currency'] ?? '' );
+        $currency = sanitize_text_field( isset( $_POST['currency'] ) ? $_POST['currency'] : '' );
 
         if ( empty( $currency ) ) :
             wp_send_json_error( [ 'message' => 'Currency not provided' ] );

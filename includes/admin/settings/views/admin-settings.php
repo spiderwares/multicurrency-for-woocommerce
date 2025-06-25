@@ -56,8 +56,7 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                         'json_override'     => esc_html__( 'Override Prices via JSON (for Polylang or Custom Cache Handling)', 'multicurrency-for-woocommerce' ),
                     ),
                     'desc'        => esc_html__(
-                        'Enable this option if your site uses a page caching plugin (e.g., WP Super Cache, W3 Total Cache, WP Rocket) and the selected currency is not retained after switching. '
-                        . 'Choose "AJAX" to reload prices dynamically, or "JSON" if you are using Polylang or other tools that require static content rewriting.',
+                        'Enable this option if your site uses a page caching plugin (e.g., WP Super Cache, W3 Total Cache, WP Rocket) and the selected currency is not retained after switching. Choose "AJAX" to reload prices dynamically, or "JSON" if you are using Polylang or other tools that require static content rewriting.',
                         'multicurrency-for-woocommerce'
                     ),
                 ),
@@ -142,7 +141,7 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                 ),
 
                 'currency_by_countries' => array(
-                    'title'         => esc_html__( 'Switch when user login', 'multicurrency-for-woocommerce-pro' ),
+                    'title'         => esc_html__( 'Switch when user login', 'multicurrency-for-woocommerce' ),
                     'field_type'    => 'mcwc_currency_by_countries',
                     'name'          => 'mcwc_settings[currency_by_countries]',
                     'default'       => '',
@@ -165,20 +164,20 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
         public static function checkout_field() {
             $fields = array(
                 
-                'enable_multi_payment' => array(
-                    'title'      => esc_html__( 'Enable', 'multicurrency-for-woocommerce' ),
-                    'field_type' => 'mcwcswitch',
-                    'default'    => 'yes',
-                    'name'       => 'mcwc_settings[enable_multi_payment]',
-                    'desc'       => esc_html__( 'Pay in many currencies.', 'multicurrency-for-woocommerce' ),
-                ),
-                'enable_cart_page' => array(
-                    'title'      => esc_html__( 'Enable Cart Page', 'multicurrency-for-woocommerce' ),
-                    'field_type' => 'mcwcbuypro',
-                    'pro_link'   => MCWC_PRO_VERSION_URL,
-                    'default'    => 'no',
-                    'desc'       => esc_html__( 'Change the currency in cart page to a check out currency.', 'multicurrency-for-woocommerce' ),
-                ),
+                // 'enable_multi_payment' => array(
+                //     'title'      => esc_html__( 'Enable', 'multicurrency-for-woocommerce' ),
+                //     'field_type' => 'mcwcswitch',
+                //     'default'    => 'yes',
+                //     'name'       => 'mcwc_settings[enable_multi_payment]',
+                //     'desc'       => esc_html__( 'Pay in many currencies.', 'multicurrency-for-woocommerce' ),
+                // ),
+                // 'enable_cart_page' => array(
+                //     'title'      => esc_html__( 'Enable Cart Page', 'multicurrency-for-woocommerce' ),
+                //     'field_type' => 'mcwcbuypro',
+                //     'pro_link'   => MCWC_PRO_VERSION_URL,
+                //     'default'    => 'no',
+                //     'desc'       => esc_html__( 'Change the currency in cart page to a check out currency.', 'multicurrency-for-woocommerce' ),
+                // ),
                 'checkout_currency' => array(
                     'title'      => esc_html__( 'Checkout Currency', 'multicurrency-for-woocommerce' ),
                     'field_type' => 'mcwcbuypro',
@@ -520,37 +519,37 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
         public static function display_rules_field() {
             $fields = array(
                 'hide_on_home' => array(
-                    'title'         => esc_html__('Hide on Home Page', 'essential-kit-for-woocommerce'),
+                    'title'         => esc_html__('Hide on Home Page', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwcswitch',
                     'default'       => 'no',
                     'name'          => 'mcwc_settings[hide_on_home]',
                 ),
                 'hide_on_shop' => array(
-                    'title'         => esc_html__('Hide on Shop Page', 'essential-kit-for-woocommerce'),
+                    'title'         => esc_html__('Hide on Shop Page', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwcswitch',
                     'default'       => 'no',
                     'name'          => 'mcwc_settings[hide_on_shop]',
                 ),
                 'hide_on_single_product' => array(
-                    'title'         => esc_html__('Hide on Single Product Page', 'essential-kit-for-woocommerce'),
+                    'title'         => esc_html__('Hide on Single Product Page', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwcswitch',
                     'default'       => 'no',
                     'name'          => 'mcwc_settings[hide_on_single_product]',
                 ),
                 'hide_on_cart' => array(
-                    'title'         => esc_html__('Hide on Cart Page', 'essential-kit-for-woocommerce'),
+                    'title'         => esc_html__('Hide on Cart Page', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwcswitch',
                     'default'       => 'no',
                     'name'          => 'mcwc_settings[hide_on_cart]',
                 ),
                 'hide_on_checkout' => array(
-                    'title'         => esc_html__('Hide on Checkout Page', 'essential-kit-for-woocommerce'),
+                    'title'         => esc_html__('Hide on Checkout Page', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwcswitch',
                     'default'       => 'no',
                     'name'          => 'mcwc_settings[hide_on_checkout]',
                 ),
                 'hide_on_product_category' => array(
-                    'title'         => esc_html__('Hide on Product Category Page', 'essential-kit-for-woocommerce'),
+                    'title'         => esc_html__('Hide on Product Category Page', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwcswitch',
                     'default'       => 'no',
                     'name'          => 'mcwc_settings[hide_on_product_category]',

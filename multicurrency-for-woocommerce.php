@@ -5,14 +5,14 @@
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.4
- * Author:            Jthemes
+ * Author:            jthemesstudio
  * Author URI:        https://jthemes.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Requires Plugins:  woocommerce
- * Text Domain:       multi-currency-for-woo
+ * Text Domain:       multicurrency-for-woocommerce
  *
- * @package Multi_Currency_For_WooCommerce
+ * @package MultiCurrency_For_WooCommerce
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -62,3 +62,7 @@ if ( ! class_exists( 'MCWC', false ) ) :
 endif;
 
 $GLOBALS['MCWC'] = MCWC::instance();
+
+
+// Set default data when active
+register_activation_hook( __FILE__, array( 'MCWC', 'activate' ) );

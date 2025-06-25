@@ -17,6 +17,7 @@ jQuery(function ($) {
             $(document.body).on( 'click', '.mcwc-update-all-rates', this.updateAllExchangeRates.bind(this) );
             $(document.body).on( 'click', '.mcwc-select-all-countries', this.selectAllCountries.bind(this) );
             $(document.body).on( 'click', '.mcwc-remove-all-countries', this.removeAllCountries.bind(this) );
+            $(document.body).on( 'change', '.mcwc-currency-select', this.updateDefaultCurrency.bind(this) );
         }
 
         initEvent() {
@@ -169,6 +170,13 @@ jQuery(function ($) {
                 select  = row.find('.mcwc_currency_country');
             select.val(null).trigger('change');
         }
+
+        updateDefaultCurrency(e) {
+            const row               = $(e.currentTarget).closest('tr'),
+                 selectedCurrency   = $(e.currentTarget).val();
+            row.find('.mcwc-default-currency').val(selectedCurrency);
+        }
+
 
     }
 

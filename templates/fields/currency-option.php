@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
         </thead>
         <tbody class="mcwc-repeater-body">
             <tr class="mcwc-repeater-template" style="display: none;">
-                <td class="mcwc-center"><input class="mcwc-default-currency" type="radio" name="<?php echo esc_attr( $field['name'] ); ?>[default][]" value=""></td>
+                <td class="mcwc-center"><input class="mcwc-default-currency" type="radio" name="<?php echo esc_attr( $field['name'] ); ?>[default][]" value="AED"></td>
                 <td>
                     <select class="mcwc-full-width" name="<?php echo esc_attr( $field['name'] ); ?>[hidden][]">
                         <option value="no"><?php esc_html_e( 'No', 'multicurrency-for-woocommerce' ); ?></option>

@@ -183,24 +183,6 @@ function mcwc_currency_options( $selected = '' ) {
     return $output;
 }
 
-// function get_all_exchange_rates( $base_currency = 'USD' ) {
-//     $response = wp_remote_get( "https://api.exchangerate.host/latest?base=" . urlencode( $base_currency ) );
-
-//     if ( is_wp_error( $response ) ) :
-//         return [];
-//     endif;
-
-//     $body = wp_remote_retrieve_body( $response );
-//     $data = json_decode( $body, true );
-
-//     if ( isset( $data['rates'] ) && is_array( $data['rates'] ) ) :
-//         return $data['rates'];
-//     endif;
-
-//     return [];
-// }
-
-
 function mcwc_get_selected_currency() {
     $settings = get_option( 'mcwc_settings', [] );
 

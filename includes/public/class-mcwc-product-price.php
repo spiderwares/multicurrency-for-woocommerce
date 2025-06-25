@@ -77,21 +77,21 @@ if ( ! class_exists( 'MCWC_Product_Price' ) ) :
                     
             return $formatted_price = number_format( $converted_price, $decimals );
 
-            // // Format with symbol based on position
-            // switch ( $position ) {
-            //     case 'left':
-            //         $price = $symbol . $formatted_price;
-            //     case 'left_space':
-            //         $price = $symbol . ' ' . $formatted_price;
-            //     case 'right':
-            //         $price = $formatted_price . $symbol;
-            //     case 'right_space':
-            //         $price = $formatted_price . ' ' . $symbol;
-            //     default:
-            //         $price = $symbol . $formatted_price;
-            // }
+            // Format with symbol based on position
+            switch ( $position ) {
+                case 'left':
+                    $price = $symbol . $formatted_price;
+                case 'left_space':
+                    $price = $symbol . ' ' . $formatted_price;
+                case 'right':
+                    $price = $formatted_price . $symbol;
+                case 'right_space':
+                    $price = $formatted_price . ' ' . $symbol;
+                default:
+                    $price = $symbol . $formatted_price;
+            }
 
-            // return $price;
+            return $price;
         }
 
         public function mcwc_get_selected_currency() {
@@ -101,14 +101,14 @@ if ( ! class_exists( 'MCWC_Product_Price' ) ) :
                 if ( ! session_id() && ! headers_sent() ) :
                     session_start();
                 endif;
-                return isset( $_SESSION['mcwc_selected_currency'] ) ? $_SESSION['mcwc_selected_currency'] : null;
+                return isset( $_SESSION['mcwc_selected_currency'] ) ? $_SESSION['mcwc_selected_currency'] : get_woocommerce_currency();
             endif;
 
-            return isset( $_COOKIE['mcwc_selected_currency'] ) ? sanitize_text_field( $_COOKIE['mcwc_selected_currency'] ) : null;
+            return isset( $_COOKIE['mcwc_selected_currency'] ) ? sanitize_text_field( $_COOKIE['mcwc_selected_currency'] ) : get_woocommerce_currency();
         }
 
         public function override_woocommerce_currency( $currency ) {
-            $selected_currency = mcwc_get_selected_currency();
+            $selected_currency = $this->mcwc_get_selected_currency();
             return $selected_currency ? $selected_currency : $currency;
         }
         

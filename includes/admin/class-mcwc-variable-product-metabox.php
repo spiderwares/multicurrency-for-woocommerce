@@ -1,110 +1,127 @@
 <?php
+/**
+ * Adds custom price fields per currency to WooCommerce product variations
+ * and handles saving those fields.
+ *
+ * @package MultiCurrencyForWooCommerce
+ */
+
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) :
 	exit;
 endif;
 
 if ( ! class_exists( 'MCWC_Variable_Product_Metabox' ) ) :
 
+	/**
+	 * Class MCWC_Variable_Product_Metabox
+	 *
+	 * Handles custom regular and sale price fields for each variation
+	 * based on configured currencies.
+	 */
 	class MCWC_Variable_Product_Metabox {
+
+		/**
+		 * Plugin settings from mcwc_settings option.
+		 *
+		 * @var array
+		 */
 		protected $settings;
 
+		/**
+		 * Constructor.
+		 */
 		public function __construct() {
-
 			$this->settings = get_option( 'mcwc_settings', array() );
 
-            // Only add these fields if the 'fixed_price' setting is enabled
 			if ( isset( $this->settings['fixed_price'] ) && $this->settings['fixed_price'] === 'yes' ) :
-                // Hook to add the custom price fields to each variation
 				add_action( 'woocommerce_variation_options_pricing', array( $this, 'variation_product_price_fields' ), 10, 3 );
-            endif;
+			endif;
 
-            // Hook to save the custom price fields when a variation is saved
-			// add_action( 'woocommerce_save_product_variation', array( $this, 'save_variation_prices' ), 10, 2 );
+			add_action( 'woocommerce_save_product_variation', array( $this, 'save_variation_prices' ), 10, 2 );
 		}
 
 		/**
-		 * Adds custom regular and sale price input fields for each currency
-		 * to product variations.
+		 * Adds custom regular and sale price input fields for each currency to product variations.
 		 *
 		 * @param int    $loop           The loop counter for variations.
 		 * @param array  $variation_data The variation data.
 		 * @param object $variation      The WC_Product_Variation object.
 		 */
 		public function variation_product_price_fields( $loop, $variation_data, $variation ) {
-            
-			$currencies    	= isset( $this->settings['currencies'] ) ? $this->settings['currencies'] : [];
-			$default    	= ( isset( $currencies[0] ) && isset( $currencies[0]['default'] ) ) ? $currencies[0]['default'] : '';
+			$currencies    = isset( $this->settings['currencies'] ) ? $this->settings['currencies'] : array();
+			$default       = ( isset( $currencies[0] ) && isset( $currencies[0]['default'] ) ) ? $currencies[0]['default'] : '';
+			$variation_id  = isset( $variation->ID ) ? $variation->ID : $variation->get_id();
 
-            // Retrieve existing multi-currency prices
-			$regular_price_mcwc = json_decode( $variation->get_meta( '_regular_price_mcwc', true ), true );
-			$sale_price_mcwc    = json_decode( $variation->get_meta( '_sale_price_mcwc', true ), true );
+			$regular_prices = json_decode( get_post_meta( $variation_id, '_regular_price_mcwc', true ), true );
+			$sale_prices    = json_decode( get_post_meta( $variation_id, '_sale_price_mcwc', true ), true );
 
 			foreach ( $currencies as $currency ) :
-                // Skip the default currency as its price is handled by WooCommerce's default fields
 				if ( $currency['currency'] === $default ) :
-					continue;
-                endif;
+					continue; // Skip default currency; handled by WooCommerce core.
+				endif;
 
-                $regular_price  = isset( $regular_price_mcwc[ $currency['currency'] ] ) ?  $regular_price_mcwc[ $currency['currency'] ] : '';
-                $sale_price     = isset( $sale_price_mcwc[ $currency['currency'] ] ) ?  $sale_price_mcwc[ $currency['currency'] ] : ''; ?>
+				$curr_code     = $currency['currency'];
+				$regular_price = isset( $regular_prices[ $curr_code ] ) ? $regular_prices[ $curr_code ] : '';
+				$sale_price    = isset( $sale_prices[ $curr_code ] ) ? $sale_prices[ $curr_code ] : ''; ?>
 
-                <div>
+				<div class="mcwc-variation-field-wrapper">
 					<p class="form-field">
-						<label for="_regular_price_mcwc_<?php echo esc_attr( $currency['currency'] ); ?>">
-							<?php echo esc_html__( 'Regular Price', 'multi-currency-woocommerce' ) . ' (' . esc_html( $currency['currency'] ) . ')'; ?>
+						<label for="variation_<?php echo esc_attr( $variation_id ); ?>_regular_price_mcwc_<?php echo esc_attr( $curr_code ); ?>">
+							<?php echo esc_html__( 'Regular Price', 'multicurrency-for-woocommerce' ) . ' (' . esc_html( $curr_code ) . ')'; ?>
 						</label>
-						<input type="text" class="short wc_input_price" name="_regular_price_mcwc[<?php echo esc_attr( $currency['currency'] ); ?>]" value="<?php //echo $regular_price; ?>">
+						<input type="text" class="short wc_input_price" name="variation_<?php echo esc_attr( $variation_id ); ?>[_regular_price_mcwc][<?php echo esc_attr( $curr_code ); ?>]" value="<?php echo esc_attr( $regular_price ); ?>">
 					</p>
 					<p class="form-field">
-						<label for="_sale_price_mcwc_<?php echo esc_attr( $currency['currency'] ); ?>">
-							<?php echo esc_html__( 'Sale Price', 'multi-currency-woocommerce' ) . ' (' . esc_html( $currency['currency'] ) . ')'; ?>
+						<label for="variation_<?php echo esc_attr( $variation_id ); ?>_sale_price_mcwc_<?php echo esc_attr( $curr_code ); ?>">
+							<?php echo esc_html__( 'Sale Price', 'multicurrency-for-woocommerce' ) . ' (' . esc_html( $curr_code ) . ')'; ?>
 						</label>
-						<input type="text" class="short wc_input_price" name="_sale_price_mcwc[<?php echo esc_attr( $currency['currency'] ); ?>]" value="<?php //echo $sale_price; ?>">
+						<input type="text" class="short wc_input_price" name="variation_<?php echo esc_attr( $variation_id ); ?>[_sale_price_mcwc][<?php echo esc_attr( $curr_code ); ?>]" value="<?php echo esc_attr( $sale_price ); ?>">
 					</p>
 				</div>
-                
-                <?php
+
+				<?php
 			endforeach;
-            // Add a clear div to ensure proper layout with floats
-            echo '<div class="clear"></div>';
+			// Clear layout if needed.
+			echo '<div class="clear"></div>';
 		}
 
 		/**
 		 * Saves the custom regular and sale prices for product variations.
 		 *
-		 * @param int $variation_id The ID of the variation being saved.
-		 * @param int $loop         The loop counter for variations.
+		 * @param int $variation_id The variation ID being saved.
+		 * @param int $i            The index in the variations loop (unused).
 		 */
-		public function save_variation_prices( $variation_id, $loop ) {
-            // Fetch the variation product object
-            $variation = wc_get_product( $variation_id );
-            if ( ! $variation ) :
-                return;
-            endif;
+		public function save_variation_prices( $variation_id, $i ) {
+			$variation = wc_get_product( $variation_id );
+			if ( ! $variation ) :
+				return;
+			endif;
 
-            // Save regular prices
-            if ( isset( $_POST['_regular_price_mcwc'][ $loop ] ) && is_array( $_POST['_regular_price_mcwc'][ $loop ] ) ) :
-                $regular_prices = array_map( 'wc_format_decimal', $_POST['_regular_price_mcwc'][ $loop ] );
-                $variation->update_meta_data( '_regular_price_mcwc', wp_json_encode( $regular_prices ) );
-            else :
-                // If no prices are submitted for this loop, remove the meta
-                $variation->delete_meta_data( '_regular_price_mcwc' );
-            endif;
+			$post_key = 'variation_' . $variation_id;
+			$data     = isset( $_POST[ $post_key ] ) ? $_POST[ $post_key ] : array();
 
-            // Save sale prices
-            if ( isset( $_POST['_sale_price_mcwc'][ $loop ] ) && is_array( $_POST['_sale_price_mcwc'][ $loop ] ) ) :
-                $sale_prices = array_map( 'wc_format_decimal', $_POST['_sale_price_mcwc'][ $loop ] );
-                $variation->update_meta_data( '_sale_price_mcwc', wp_json_encode( $sale_prices ) );
-            else :
-                // If no prices are submitted for this loop, remove the meta
-                $variation->delete_meta_data( '_sale_price_mcwc' );
-            endif;
+			// Save regular prices.
+			if ( isset( $data['_regular_price_mcwc'] ) && is_array( $data['_regular_price_mcwc'] ) ) :
+				$regular_prices = array_map( 'wc_format_decimal', $data['_regular_price_mcwc'] );
+				$variation->update_meta_data( '_regular_price_mcwc', wp_json_encode( $regular_prices ) );
+			else :
+				$variation->delete_meta_data( '_regular_price_mcwc' );
+			endif;
 
-            // Save the updated variation data
-            $variation->save();
+			// Save sale prices.
+			if ( isset( $data['_sale_price_mcwc'] ) && is_array( $data['_sale_price_mcwc'] ) ) :
+				$sale_prices = array_map( 'wc_format_decimal', $data['_sale_price_mcwc'] );
+				$variation->update_meta_data( '_sale_price_mcwc', wp_json_encode( $sale_prices ) );
+			else:
+				$variation->delete_meta_data( '_sale_price_mcwc' );
+			endif;
+
+			$variation->save();
 		}
 	}
 
+	// Initialize the metabox functionality.
 	new MCWC_Variable_Product_Metabox();
 
 endif;

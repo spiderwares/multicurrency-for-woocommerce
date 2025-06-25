@@ -3,10 +3,13 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
+<div class="wrap">
+    <h2 class="mcwc-response-message"></h2>
+</div>
 <div class="jthemes_page jthemes_settings_page wrap">
     <div class="card">
-    <!-- Display the plugin title and version -->
-        <h1 class="title">
+        <!-- Display the plugin title and version -->
+        <h2 class="mcwc-title">
             <?php 
             // Output the plugin title, version, and premium label (if applicable).
             echo esc_html__( 'Multi Currency for WooCommerce', 'multicurrency-for-woocommerce' ) . ' ' . esc_html( MCWC_VERSION ) . ' ' . 
@@ -15,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
                 : '' 
             ); 
             ?>
-        </h1>
+        </h2>
 
         <!-- Plugin description and external links -->
         <div class="jthemes_settings_page_desc about-text">
