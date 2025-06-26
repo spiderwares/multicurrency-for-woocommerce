@@ -10,19 +10,20 @@
 
 if ( ! defined( 'ABSPATH' ) ) :
     exit;
-endif;
-?>
+endif; ?>
 
-<div class="mcwc-single-dropdown-wrapper mcwc-position-<?php echo esc_attr( $position ); ?>">
+<div class="mcwc-single-dropdown-wrapper">
     <div class="mcwc-single-dropdown">
         <div class="mcwc-dropdown-list mcwc-currency-switcher">
-            <?php foreach ( $currencies as $currency ) : ?>
-                <?php $active = ( $currency['code'] === $selected_currency ) ? 'mcwc-active' : ''; ?>
-                <?php $flag_code = isset( $map[ strtoupper( $currency['code'] ) ] ) ? $map[ strtoupper( $currency['code'] ) ] : 'xx'; ?>
-                <div class="mcwc-dropdown-item mcwc-currency <?php echo esc_attr( $active ); ?>" data-currency="<?php echo esc_attr( $currency['code'] ); ?>">
+            <?php foreach ( $currencies as $currency ) : 
+                $nonce      = wp_create_nonce( 'mcwc_switch_currency' );
+                $perameter  = 'mcwc_currency='.$currency['code'].'&mcwc_nonce='.$nonce;
+                $active     = ( $currency['code'] === $selected_currency ) ? 'mcwc-active' : ''; 
+                $flag_code  = isset( $map[ strtoupper( $currency['code'] ) ] ) ? $map[ strtoupper( $currency['code'] ) ] : 'xx'; ?>
+                <a class="mcwc-dropdown-item mcwc-currency <?php echo esc_attr( $active ); ?>" href="?<?php echo esc_attr( $perameter ); ?>" <?php echo esc_attr( $rel_nofollow ); ?> data-currency="<?php echo esc_attr( $currency['code'] ); ?>">
                     <span class="mcwc-flag flag-<?php echo esc_attr( $flag_code ); ?>"></span>
                     <span class="mcwc-currency-code"><?php echo esc_html( strtoupper( $currency['code'] ) ); ?></span>
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>

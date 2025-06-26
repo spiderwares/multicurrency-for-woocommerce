@@ -66,6 +66,11 @@ if ( ! class_exists( 'MCWC_Exchange_Rate' ) ) :
 		 * @return void Outputs JSON success or error response.
 		 */
 		public function get_exchange_rates() {
+
+			if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'mcwc_currency_nonce' ) ) :
+                return;
+            endif;
+
 			$default_currency = isset( $_POST['default_currency'] ) ? sanitize_text_field( $_POST['default_currency'] ) : '';
 			$other_currencies = isset( $_POST['other_currencies'] ) ? explode( ',', sanitize_text_field( $_POST['other_currencies'] ) ) : [];
 

@@ -16,9 +16,9 @@ endif; ?>
         <div class="mcwc-currency-switcher">
             <?php foreach ( $currencies as $currency ) : 
                 $nonce      = wp_create_nonce( 'mcwc_switch_currency' );
-                $perameter = 'mcwc_currency='.$currency['code'].'&mcwc_nonce='.$nonce; ?>
-                <?php $active = ( $currency['code'] === $selected_currency ) ? 'mcwc-active' : ''; ?>
-                <a class="mcwc-currency <?php echo esc_attr( $active ); ?>" href="?<?php echo esc_attr( $perameter ); ?>" data-currency="<?php echo esc_attr( $currency['code'] ); ?>">
+                $perameter  = 'mcwc_currency='.$currency['code'].'&mcwc_nonce='.$nonce; 
+                $active     = ( $currency['code'] === $selected_currency ) ? 'mcwc-active' : ''; ?>
+                <a class="mcwc-currency <?php echo esc_attr( $active ); ?>" href="?<?php echo esc_attr( $perameter ); ?>" <?php echo esc_attr( $rel_nofollow ); ?> data-currency="<?php echo esc_attr( $currency['code'] ); ?>">
                     <span class="mcwc-currency-symbol"><?php echo esc_html( $currency['code'] . ' (' . $currency['symbol'] . ')' ); ?></span>
                 </a>
             <?php endforeach ?>

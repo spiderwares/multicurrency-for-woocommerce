@@ -52,9 +52,10 @@ if ( ! class_exists( 'MCWC_Single_Switcher' ) ) :
                 return;
             endif;
 
-            $map    = require MCWC_PATH . 'includes/static/flag.php';
-            $style  = isset( $this->settings['single_switcher_style'] ) ? $this->settings['single_switcher_style'] : 'no';
-            $layout = isset( $this->settings['switcher_layout'] ) ? $this->settings['switcher_layout'] : 'split';
+            $map            = require MCWC_PATH . 'includes/static/flag.php';
+            $style          = isset( $this->settings['single_switcher_style'] ) ? $this->settings['single_switcher_style'] : 'no';
+            $layout         = isset( $this->settings['switcher_layout'] ) ? $this->settings['switcher_layout'] : 'split';
+            $rel_nofollow   = ( isset( $this->settings['rel_nofollow'] ) && $this->settings['rel_nofollow'] === 'yes' ) ? 'rel=nofollow' : '';
 
             switch ( $style ) :
                 case 'flag':
@@ -81,6 +82,7 @@ if ( ! class_exists( 'MCWC_Single_Switcher' ) ) :
                     'currencies'        => $currencies,
                     'map'               => $map,
                     'layout'            => $layout,
+                    'rel_nofollow'      => $rel_nofollow,
                     'selected_currency' => mcwc_get_selected_currency(),
                 ),
                 'multicurrency-for-woocommerce/',

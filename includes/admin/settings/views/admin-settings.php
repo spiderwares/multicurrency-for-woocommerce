@@ -61,6 +61,14 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     ),
                 ),
 
+                'rel_nofollow' => array(
+                    'title'         => esc_html__( 'Use rel="nofollow"', 'multicurrency-for-woocommerce' ),
+                    'field_type'    => 'mcwcswitch',
+                    'name'          => 'mcwc_settings[rel_nofollow]',
+                    'default'       => '',
+                    'desc'          => esc_html__( 'Enable this if you want rel="nofollow" to be added to currency switcher buttons', 'multicurrency-for-woocommerce' ),
+                ),
+
                 'currency_option_title' => array(
                     'title'         => esc_html__('Currency Options', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwctitle',
@@ -239,13 +247,13 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'desc'       => esc_html__( 'Select the position where the currency switcher will appear. Left or Right aligned on the screen.', 'multicurrency-for-woocommerce' ),
                 ),
 
-                'enable_desktop' => array(
-                    'title'      => esc_html__( 'Desktop', 'multicurrency-for-woocommerce' ),
-                    'field_type' => 'mcwcswitch',
-                    'name'       => 'mcwc_settings[enable_desktop]',
-                    'default'    => 'no',
-                    'desc'       => esc_html__( 'Sidebar will collapse if you have many currencies.', 'multicurrency-for-woocommerce' ),
-                ),
+                // 'enable_desktop' => array(
+                //     'title'      => esc_html__( 'Desktop', 'multicurrency-for-woocommerce' ),
+                //     'field_type' => 'mcwcswitch',
+                //     'name'       => 'mcwc_settings[enable_desktop]',
+                //     'default'    => 'no',
+                //     'desc'       => esc_html__( 'Sidebar will collapse if you have many currencies.', 'multicurrency-for-woocommerce' ),
+                // ),
 
                 // 'enable_click_to_expand_currency_bar' => array(
                 //     'title'      => esc_html__( 'Click to expand currencies bar', 'multicurrency-for-woocommerce' ),
@@ -390,8 +398,15 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'default'     => '#ffffff',
                 ),
 
-                'widget' => array(
-                    'title'         => esc_html__('Widget', 'multicurrency-for-woocommerce'),
+                // 'widget' => array(
+                //     'title'         => esc_html__('Widget', 'multicurrency-for-woocommerce'),
+                //     'field_type'    => 'mcwctitle',
+                //     'default'       => '',
+                // ),
+
+
+                'custom' => array(
+                    'title'         => esc_html__('Custom', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwctitle',
                     'default'       => '',
                 ),
@@ -404,20 +419,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'default'     => '',
                     'rows'        => '6',
                     'desc'        => esc_html__( 'Some countries use the same currency. You can choose the correct flag. Each line is the flag. Structure [currency_code,country_code]. Example: EUR,es', 'multicurrency-for-woocommerce' ),
-                ),
-
-                'custom' => array(
-                    'title'         => esc_html__('Custom', 'multicurrency-for-woocommerce'),
-                    'field_type'    => 'mcwctitle',
-                    'default'       => '',
-                ),
-
-                'rel_nofollow' => array(
-                    'title'         => esc_html__( 'Use rel="nofollow"', 'multicurrency-for-woocommerce' ),
-                    'field_type'    => 'mcwcswitch',
-                    'name'          => 'mcwc_settings[rel_nofollow]',
-                    'default'       => '',
-                    'desc'          => esc_html__( 'Enable this if you want rel="nofollow" to be added to currency switcher buttons', 'multicurrency-for-woocommerce' ),
                 ),
 
                 'custom_css' => array(

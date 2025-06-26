@@ -35,5 +35,5 @@ $custom_css = isset( $settings[ 'custom_css' ] ) ? $settings[ 'custom_css' ] : '
 }
 
 <?php if ( ! empty( $custom_css ) ) : ?>
-<?php echo wp_strip_all_tags( $custom_css ); ?>
+<?php echo wp_kses( $custom_css ); ?>
 <?php endif; ?>

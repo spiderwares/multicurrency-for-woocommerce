@@ -25,7 +25,6 @@ if ( ! class_exists( 'MCWC' ) ) :
          */
         public function __construct() {
             $this->event_handler();
-            $this->includes();
         }
         
         /**
@@ -95,8 +94,8 @@ if ( ! class_exists( 'MCWC' ) ) :
                 $this->includes_public();
             endif;
 
-            require_once MCWC_PATH . 'includes/admin/class-mcwc-exchange-rate.php'; 
             require_once MCWC_PATH . 'includes/mcwc-funcation.php'; 
+            require_once MCWC_PATH . 'includes/admin/class-mcwc-exchange-rate.php'; 
             require_once MCWC_PATH . 'includes/public/class-mcwc-switcher.php';
             require_once MCWC_PATH . 'includes/public/class-mcwc-product-price.php';
             require_once MCWC_PATH . 'includes/public/class-mcwc-geo-detector.php';

@@ -33,7 +33,7 @@ if ( ! class_exists( 'MCWC_Geo_Currency' ) ) :
          */
         public function __construct() {
             $this->settings = get_option( 'mcwc_settings', array() );
-            add_action( 'init', [ $this, 'set_currency_by_geo' ] );
+            add_action( 'wp_login', [ $this, 'set_currency_by_geo' ] );
         }
 
         /**
@@ -55,13 +55,13 @@ if ( ! class_exists( 'MCWC_Geo_Currency' ) ) :
 
             $geo_data     = WC_Geolocation::geolocate_ip();
             $country_code = isset( $geo_data['country'] ) ? $geo_data['country'] : '';
-
+            
             if ( ! $country_code ) :
                 return;
             endif;
 
             $currency = $this->get_currency_by_country( $country_code );
-
+            
             if ( $currency ) :
                 if ( isset( $this->settings['use_session'] ) && $this->settings['use_session'] === 'yes' ) :
                     if ( ! session_id() && ! headers_sent() ) :
@@ -80,10 +80,19 @@ if ( ! class_exists( 'MCWC_Geo_Currency' ) ) :
          * @param string $country_code ISO country code.
          * @return string Currency code or empty string if not found.
          */
-        private function get_currency_by_country( $country_code ) {
-            $map  = include MCWC_PATH . 'includes/static/country-by-currency.php';
-            $code = strtoupper( $country_code );
-            return isset( $map[ $code ] ) ? $map[ $code ] : '';
+        private function get_currency_by_country( $country ) {
+			$currency = '';
+
+            if ( ! empty( $this->settings['currency_by_countries'] ) && is_array( $this->settings['currency_by_countries'] ) ) :
+				foreach ( $this->settings['currency_by_countries'] as $currency_code => $countries ) :
+					if ( is_array( $countries ) && in_array( $country, $countries, true ) ) :
+						$currency = $currency_code;
+						break;
+					endif;
+				endforeach;
+			endif;
+
+			return $currency;
         }
 
     }

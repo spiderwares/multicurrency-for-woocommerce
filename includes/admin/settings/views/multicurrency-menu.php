@@ -24,12 +24,9 @@ defined( 'ABSPATH' ) || exit;
         <div class="jthemes_settings_page_desc about-text">
             <p>
                 <?php 
-                // Thank the user and encourage them to leave a review.
-                printf( 
-                    esc_html__( 'Thank you for choosing our plugin! If you’re happy with its performance, we’d be grateful if you could give us a five-star %s rating. Your support helps us improve and deliver even better features.', 'multicurrency-for-woocommerce' ), 
-                    '<span style="color:#ff0000">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' 
-                ); 
-                ?>
+                // translators: %s is a span with 5 red stars (★) for visual star rating.
+                printf(  esc_html__( 'Thank you for choosing our plugin! If you’re happy with its performance, we’d be grateful if you could give us a five-star %s rating. Your support helps us improve and deliver even better features.', 'multicurrency-for-woocommerce' ), 
+                    '<span style="color:#ff0000">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' );  ?>
                 <br/>
                 <!-- Add links to reviews, changelog, and discussion pages -->
                 <a href="<?php echo esc_url( MCWC_REVIEWS ); ?>" target="_blank"><?php esc_html_e( 'Reviews', 'multicurrency-for-woocommerce' ); ?></a> |

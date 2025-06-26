@@ -116,10 +116,11 @@ if ( ! class_exists( 'MCWC_Switcher_Sidebar' ) ) :
                 return;
             endif;
 
-            $map        = require MCWC_PATH . 'includes/static/flag.php';
-            $title      = isset( $this->settings['switcher_title'] ) ? $this->settings['switcher_title'] : '';
-            $position   = isset( $this->settings['design_position'] ) ? $this->settings['design_position'] : 'left';
-            $style      = isset( $this->settings['sidebar_style'] ) ? $this->settings['sidebar_style'] : 'default';
+            $map            = require MCWC_PATH . 'includes/static/flag.php';
+            $title          = isset( $this->settings['switcher_title'] ) ? $this->settings['switcher_title'] : '';
+            $position       = isset( $this->settings['design_position'] ) ? $this->settings['design_position'] : 'left';
+            $style          = isset( $this->settings['sidebar_style'] ) ? $this->settings['sidebar_style'] : 'default';
+            $rel_nofollow   = ( isset( $this->settings['rel_nofollow'] ) && $this->settings['rel_nofollow'] === 'yes' ) ? 'rel=nofollow' : '';
 
             switch ( $style ) :
                 case 'symbol':
@@ -147,6 +148,7 @@ if ( ! class_exists( 'MCWC_Switcher_Sidebar' ) ) :
                     'title'             => $title,
                     'position'          => $position,
                     'map'               => $map,
+                    'rel_nofollow'      => $rel_nofollow,
                     'selected_currency' => mcwc_get_selected_currency(),
                 ),
                 'multicurrency-for-woocommerce/',

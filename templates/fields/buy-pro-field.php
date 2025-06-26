@@ -11,8 +11,7 @@ defined( 'ABSPATH' ) || exit; ?>
             <?php esc_html_e( 'This feature is only available in the Premium Version.', 'multicurrency-for-woocommerce' ); ?>
             <?php 
             /* Translators: %1$s is the opening anchor tag, and %2$s is the closing anchor tag. */
-            echo sprintf(
-                esc_html__( 'Click %1$shere%2$s to buy.', 'multicurrency-for-woocommerce' ),
+            echo sprintf( esc_html__( 'Click %1$shere%2$s to buy.', 'multicurrency-for-woocommerce' ),
                 '<a href="' . esc_url( $field['pro_link'] ) . '" target="_blank">',
                 '</a>'
             ); 

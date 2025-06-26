@@ -86,7 +86,7 @@ if ( ! class_exists( 'MCWC_Admin_Menu' ) ) :
 		 */
         public function admin_menu_content() {
             require_once MCWC_PATH . 'includes/admin/settings/views/admin-settings.php';
-
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a view file, not handling user input directly.
             $active_tab = isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'general';
             require_once MCWC_PATH . 'includes/admin/settings/views/multicurrency-menu.php';
         }

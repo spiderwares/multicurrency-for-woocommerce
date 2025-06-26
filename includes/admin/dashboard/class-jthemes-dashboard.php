@@ -10,17 +10,17 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-if ( ! class_exists( 'Jthemes_Dashboard' ) ) {
+if ( ! class_exists( 'MCWC_Jthemes_Dashboard' ) ) {
 
 	/**
-	 * Class Jthemes_Dashboard
+	 * Class MCWC_Jthemes_Dashboard
 	 *
 	 * Initializes the admin dashboard for Jthemes.
 	 */
-	class Jthemes_Dashboard {
+	class MCWC_Jthemes_Dashboard {
 
 		/**
-		 * Constructor for Jthemes_Dashboard class.
+		 * Constructor for MCWC_Jthemes_Dashboard class.
 		 * Initializes the event handler.
 		 */
 		public function __construct() {
@@ -116,6 +116,6 @@ if ( ! class_exists( 'Jthemes_Dashboard' ) ) {
 		}
 	}
 
-	// Instantiate the Jthemes_Dashboard class.
-	new Jthemes_Dashboard();
+	// Instantiate the MCWC_Jthemes_Dashboard class.
+	new MCWC_Jthemes_Dashboard();
 }
