@@ -98,6 +98,12 @@ if ( ! class_exists( 'MCWC_Variable_Product_Metabox' ) ) :
 				return;
 			endif;
 
+			
+			// Always verify nonce (optional for core variation saves, but good practice if added custom logic).
+			if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'woocommerce-save' ) ) :
+				return;
+			endif;
+
 			$post_key = 'variation_' . $variation_id;
 			$data     = isset( $_POST[ $post_key ] ) ? $_POST[ $post_key ] : array();
 

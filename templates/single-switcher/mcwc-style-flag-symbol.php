@@ -10,8 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) :
     exit;
-endif;
-?>
+endif; ?>
 
 <div class="mcwc-single-dropdown-wrapper">
     <div class="mcwc-single-dropdown">

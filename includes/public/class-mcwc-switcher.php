@@ -46,7 +46,7 @@ if ( ! class_exists( 'MCWC_currency_Switcher' ) ) :
 		 * @return void
 		 */
         public function handle_currency_switcher() {
-            if ( isset( $_GET['mcwc_currency'] ) && isset( $_GET['mcwc_nonce'] ) && wp_verify_nonce( $_GET['mcwc_nonce'], 'mcwc_switch_currency' ) ) :
+            if ( isset( $_GET['mcwc_currency'] ) && isset( $_GET['mcwc_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['mcwc_nonce'] ) ), 'mcwc_switch_currency' ) ) :
                 $currency = sanitize_text_field( wp_unslash( $_GET['mcwc_currency'] ) );
 
                 if ( ! $currency ) :

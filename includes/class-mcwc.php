@@ -31,12 +31,14 @@ if ( ! class_exists( 'MCWC' ) ) :
          * Initialize hooks and filters.
          */
         private function event_handler() {
-            // Register plugin activation hook
-            register_activation_hook( MCWC_FILE, array( 'MCWC_install', 'install' ) );
-
+            
             // Hook to install the plugin after plugins are loaded
             add_action( 'plugins_loaded', array( $this, 'mcwc_install' ), 11 );
             add_action( 'mcwc_init', array( $this, 'includes' ), 11 );
+            
+            // Register plugin activation hook
+            require_once MCWC_PATH . 'includes/class-mcwc-install.php'; 
+            register_activation_hook( MCWC_FILE, array( 'MCWC_install', 'install' ) );
         }
 
         /**
@@ -99,6 +101,7 @@ if ( ! class_exists( 'MCWC' ) ) :
             require_once MCWC_PATH . 'includes/public/class-mcwc-switcher.php';
             require_once MCWC_PATH . 'includes/public/class-mcwc-product-price.php';
             require_once MCWC_PATH . 'includes/public/class-mcwc-geo-detector.php';
+            require_once MCWC_PATH . 'includes/public/class-mcwc-mini-cart.php';
         }
         
         /**
@@ -107,7 +110,6 @@ if ( ! class_exists( 'MCWC' ) ) :
          * @access private
          */
         public function includes_admin() {
-            require_once MCWC_PATH . 'includes/class-mcwc-install.php'; 
             require_once MCWC_PATH . 'includes/admin/dashboard/class-jthemes-dashboard.php';
             require_once MCWC_PATH . 'includes/admin/settings/class-mcwc-admin-menu.php';
             require_once MCWC_PATH . 'includes/admin/class-mcwc-simple-product-metabox.php';

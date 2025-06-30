@@ -1,3 +1,11 @@
+<?php
+/**
+ * Currency by countries Field Template
+ */
+
+// Prevent direct access to the file.
+defined( 'ABSPATH' ) || exit; ?>
+
 <td colspan="2" style="padding:0;">
     <table class="mcwc-table mcwc-currency-by-country">
         <thead>

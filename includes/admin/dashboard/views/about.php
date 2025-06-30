@@ -1,3 +1,7 @@
+<?php
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit; ?>
+
 <div class="jthemes_page jthemes_welcome_page wrap">
     <h1><?php esc_html_e( 'Jthemes | Innovation meets creativity', 'multicurrency-for-woocommerce' ) ?></h1>
     <div class="card">

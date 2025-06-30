@@ -21,17 +21,18 @@ if ( ! class_exists( 'MCWC_Product_Price' ) ) :
         }
 
         private function event_handler() {
-            add_filter( 'woocommerce_product_get_price', array( $this, 'convert_price_by_currency' ), 10, 2 );
-            add_filter( 'woocommerce_product_get_regular_price', array( $this, 'convert_price_by_currency' ), 10, 2 );
-            add_filter( 'woocommerce_product_get_sale_price', array( $this, 'convert_price_by_currency' ), 10, 2 );
+            add_filter( 'woocommerce_currency', array( $this, 'override_woocommerce_currency' ), 999 );
 
-            add_filter( 'woocommerce_product_variation_get_price', array( $this, 'convert_price_by_currency' ), 10, 2 );
-            add_filter( 'woocommerce_product_variation_get_regular_price', array( $this, 'convert_price_by_currency' ), 10, 2 );
-            add_filter( 'woocommerce_product_variation_get_sale_price', array( $this, 'convert_price_by_currency' ), 10, 2 );
+            add_filter( 'woocommerce_product_get_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
+            add_filter( 'woocommerce_product_get_regular_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
+            add_filter( 'woocommerce_product_get_sale_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
 
-            add_filter( 'woocommerce_get_price_html', array( $this, 'convert_price_html_for_variable_product' ), 20, 2 );
+            add_filter( 'woocommerce_product_variation_get_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
+            add_filter( 'woocommerce_product_variation_get_regular_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
+            add_filter( 'woocommerce_product_variation_get_sale_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
 
-            add_filter( 'woocommerce_currency', array( $this, 'override_woocommerce_currency' ) );
+            add_filter( 'woocommerce_variation_prices_price', array( $this, 'convert_price_by_currency' ), 99, 2 );
+
         }
 
         public function convert_price_by_currency( $price, $product ) {
@@ -59,9 +60,8 @@ if ( ! class_exists( 'MCWC_Product_Price' ) ) :
                 $regular_price_meta = json_decode( get_post_meta( $product_id, '_regular_price_mcwc', true ), true );
                 $sale_price_meta    = json_decode( get_post_meta( $product_id, '_sale_price_mcwc', true ), true );
 
-                $custom_price = null;
-
                 $sale_price_available    = isset( $sale_price_meta[ $selected_currency ] ) && is_numeric( $sale_price_meta[ $selected_currency ] );
+                $custom_price            = null;
                 $regular_price_available = isset( $regular_price_meta[ $selected_currency ] ) && is_numeric( $regular_price_meta[ $selected_currency ] );
 
                 // Prioritize sale price if available
@@ -159,42 +159,3 @@ if ( ! class_exists( 'MCWC_Product_Price' ) ) :
     new MCWC_Product_Price();
 
 endif;
-
-
-
-
-// private function get_converted_price( $price, $product ) {
-//     $selected_currency = $this->get_selected_currency();
-//     $currencies = isset( $this->settings['currencies'] ) ? $this->settings['currencies'] : [];
-
-//     echo "<pre>";
-//     print_r($this->settings);
-//     die;
-
-//     if ( ! $selected_currency || empty( $currencies ) ) :
-//         return false;
-//     endif;
-
-//     foreach ( $currencies as $currency ) {
-//         if ( $currency['currency'] === $selected_currency ) :
-//             $rate     = isset( $currency['rate'] ) ? floatval( $currency['rate'] ) : 1;
-//             $fee      = isset( $currency['fee'] ) ? floatval( $currency['fee'] ) : 0;
-//             $decimals = isset( $currency['decimals'] ) ? intval( $currency['decimals'] ) : 2;
-
-//             $converted_price = floatval( $price ) * $rate;
-//             if ( $fee > 0 ) :
-//                 $converted_price += $fee;
-//             endif;
-
-//             return [
-//                 'price'    => round( $converted_price, $decimals ),
-//                 'decimals' => $decimals,
-//                 'symbol'   => isset( $currency['symbol'] ) && $currency['symbol'] ? $currency['symbol'] : get_woocommerce_currency_symbol( $selected_currency ),
-//                 'position' => isset( $currency['position'] ) ? $currency['position'] : 'left',
-//                 'currency' => $selected_currency,
-//             ];
-//         endif;
-//     }
-
-//     return false;
-// }

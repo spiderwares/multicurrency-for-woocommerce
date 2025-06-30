@@ -43,6 +43,7 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'field_type'    => 'mcwcbuypro',
                     'pro_link'      => MCWC_PRO_VERSION_URL,
                     'default'       => 'no',
+                    'desc'          => esc_html__( 'Enable this to clean up currency switcher URLs by avoiding query strings like ?mcwc_currency={currency_code}', 'multicurrency-for-woocommerce' ),
                 ),
 
                 'use_cache' => array(
@@ -108,13 +109,13 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'data_hide'  => '.auto_detect_option',
                     'options'    => array(
                         'no'                 => esc_html__( 'No', 'multicurrency-for-woocommerce' ),
-                        'auto_select'        => esc_html__( 'Auto select currency', 'multicurrency-for-woocommerce' ),
                         'woocommerce_geoip'  => esc_html__( 'WooCommerce GeoIP', 'multicurrency-for-woocommerce' ),
-                        'polylang'           => esc_html__( 'Language Polylang', 'multicurrency-for-woocommerce' ),
-                        'approximate_price'  => esc_html__( 'Approximate Price', 'multicurrency-for-woocommerce' ),
+                        'auto_select'        => esc_html__( 'Auto select currency (Premium)', 'multicurrency-for-woocommerce' ),
+                        'polylang'           => esc_html__( 'Language Polylang (Premium)', 'multicurrency-for-woocommerce' ),
+                        'approximate_price'  => esc_html__( 'Approximate Price (Premium)', 'multicurrency-for-woocommerce' ),
                         'TranslatePress'     => esc_html__( 'TranslatePress Multilingual (Premium)', 'multicurrency-for-woocommerce' ),
                     ),
-                    'disabled_options' => array( 'TranslatePress', 'approximate_price' ),
+                    'disabled_options' => array( 'TranslatePress', 'approximate_price', 'auto_select', 'polylang' ),
                 ),
 
                 'switch_user_login' => array(
@@ -123,21 +124,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'pro_link'      => MCWC_PRO_VERSION_URL,
                     'default'       => 'no',
                 ),
-
-                // 'geo_api' => array(
-                //     'title'      => esc_html__( 'Geo API', 'multicurrency-for-woocommerce' ),
-                //     'field_type' => 'mcwcselect',
-                //     'name'       => 'mcwc_settings[geo_api]',
-                //     'default'    => 'no',
-                //     'options'    => array(
-                //         'woocommerce'       => esc_html__( 'WooCommerce', 'multicurrency-for-woocommerce' ),
-                //         'external'          => esc_html__( 'External', 'multicurrency-for-woocommerce' ),
-                //         'polylang'          => esc_html__( 'Inherited from server (Premium)', 'multicurrency-for-woocommerce' ),
-                //         'TranslatePress'    => esc_html__( 'MaxMind Geolocation (Premium)', 'multicurrency-for-woocommerce' ),
-                //     ),
-                //     'desc'              => esc_html__( 'API will help detect customer country code base on IP address.', 'multicurrency-for-woocommerce' ),
-                //     'disabled_options'  => array('polylang', 'TranslatePress',),
-                // ),
 
                 'currency_by_country'   => array(
                     'title'         => esc_html__( 'Currency by Country', 'multicurrency-for-woocommerce' ),
@@ -171,21 +157,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
          */
         public static function checkout_field() {
             $fields = array(
-                
-                // 'enable_multi_payment' => array(
-                //     'title'      => esc_html__( 'Enable', 'multicurrency-for-woocommerce' ),
-                //     'field_type' => 'mcwcswitch',
-                //     'default'    => 'yes',
-                //     'name'       => 'mcwc_settings[enable_multi_payment]',
-                //     'desc'       => esc_html__( 'Pay in many currencies.', 'multicurrency-for-woocommerce' ),
-                // ),
-                // 'enable_cart_page' => array(
-                //     'title'      => esc_html__( 'Enable Cart Page', 'multicurrency-for-woocommerce' ),
-                //     'field_type' => 'mcwcbuypro',
-                //     'pro_link'   => MCWC_PRO_VERSION_URL,
-                //     'default'    => 'no',
-                //     'desc'       => esc_html__( 'Change the currency in cart page to a check out currency.', 'multicurrency-for-woocommerce' ),
-                // ),
                 'checkout_currency' => array(
                     'title'      => esc_html__( 'Checkout Currency', 'multicurrency-for-woocommerce' ),
                     'field_type' => 'mcwcbuypro',
@@ -200,14 +171,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'default'    => 'no',
                     'desc'       => esc_html__( 'Enable this option to change the currency immediately at the checkout order detail when the customer selects a payment gateway, instead of after clicking the Place order button.', 'multicurrency-for-woocommerce' ),
                 ),
-                'change_currency_follow' => array(
-                    'title'      => esc_html__( 'Change Currency Follow', 'multicurrency-for-woocommerce' ),
-                    'field_type' => 'mcwcbuypro',
-                    'pro_link'   => MCWC_PRO_VERSION_URL,
-                    'default'    => 'no',
-                    'desc'       => esc_html__( 'Change currency when customer change billing or shipping address.', 'multicurrency-for-woocommerce' ),
-                ),
-
             );
 
             // Apply filter to allow modifications to the checkout fields.
@@ -246,22 +209,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     ),
                     'desc'       => esc_html__( 'Select the position where the currency switcher will appear. Left or Right aligned on the screen.', 'multicurrency-for-woocommerce' ),
                 ),
-
-                // 'enable_desktop' => array(
-                //     'title'      => esc_html__( 'Desktop', 'multicurrency-for-woocommerce' ),
-                //     'field_type' => 'mcwcswitch',
-                //     'name'       => 'mcwc_settings[enable_desktop]',
-                //     'default'    => 'no',
-                //     'desc'       => esc_html__( 'Sidebar will collapse if you have many currencies.', 'multicurrency-for-woocommerce' ),
-                // ),
-
-                // 'enable_click_to_expand_currency_bar' => array(
-                //     'title'      => esc_html__( 'Click to expand currencies bar', 'multicurrency-for-woocommerce' ),
-                //     'field_type' => 'mcwcbuypro',
-                //     'pro_link'   => MCWC_PRO_VERSION_URL,
-                //     'default'    => 'no',
-                //     'desc'       => esc_html__( 'By default, currencies bar will expand on hovering. Enable this option if you want them to only expand when clicking on.', 'multicurrency-for-woocommerce' ),
-                // ),
 
                 'expand_button_color' => array(
                     'title'      => esc_html__( 'Expand button color', 'multicurrency-for-woocommerce' ),
@@ -356,14 +303,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'desc'       => esc_html__( 'Position of currency switcher in single product pages, it may be affected by the theme or product template', 'multicurrency-for-woocommerce' ),
                 ),
 
-                // 'enable_click_to_expand_currency_selector' => array(
-                //     'title'      => esc_html__( 'Click to expand currency selector', 'multicurrency-for-woocommerce' ),
-                //     'field_type' => 'mcwcbuypro',
-                //     'pro_link'   => MCWC_PRO_VERSION_URL,
-                //     'default'    => 'no',
-                //     'desc'       => esc_html__( 'By default, dropdown currency selector will expand on hovering. Enable this option if you want them to only expand when clicking on.', 'multicurrency-for-woocommerce' ),
-                // ),
-
                 'product_currency_selector_shortcode' => array(
                     'title'         => esc_html__('Single Product currency Switcher', 'multicurrency-for-woocommerce'),
                     'field_type'    => 'mcwctitle',
@@ -397,13 +336,6 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                     'name'        => 'mcwc_settings[shortcode_active_bg_color]',
                     'default'     => '#ffffff',
                 ),
-
-                // 'widget' => array(
-                //     'title'         => esc_html__('Widget', 'multicurrency-for-woocommerce'),
-                //     'field_type'    => 'mcwctitle',
-                //     'default'       => '',
-                // ),
-
 
                 'custom' => array(
                     'title'         => esc_html__('Custom', 'multicurrency-for-woocommerce'),

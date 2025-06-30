@@ -1,8 +1,7 @@
 <?php 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit; ?>
 
-?>
 <div class="wrap">
     <h2 class="mcwc-response-message"></h2>
 </div>
@@ -66,13 +65,6 @@ defined( 'ABSPATH' ) || exit;
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/design.svg'); ?>" />
                 <?php esc_html_e( 'Design', 'multicurrency-for-woocommerce' ); ?>
             </a>
-            <?php /*
-            <!-- Price Foramte settings tab -->
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=price-format' ) ); ?>" 
-               class="<?php echo esc_attr( $active_tab === 'price-format' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
-                <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/price-format.svg'); ?>" />
-                <?php esc_html_e( 'Price Foramte', 'multicurrency-for-woocommerce' ); ?>
-            </a>  */ ?>
 
             <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=visibility' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'visibility' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
@@ -86,16 +78,7 @@ defined( 'ABSPATH' ) || exit;
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/update.svg'); ?>" />
                 <?php esc_html_e( 'Update', 'multicurrency-for-woocommerce' ); ?>
             </a>
-
-            <!-- Premium version tab, visible only if not in the premium version -->
-            <?php /* if ( ! defined( 'MCWC_PREMIUM' ) ) : ?>
-                <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=premium' ) ); ?>" 
-                   class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>" 
-                   style="color: #c9356e;">
-                    <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/general.svg'); ?>" />
-                    <?php esc_html_e( 'Premium Version', 'multicurrency-for-woocommerce' ); ?>
-                </a>
-            <?php endif; */ ?>
+            
         </h2>
     </div>
 

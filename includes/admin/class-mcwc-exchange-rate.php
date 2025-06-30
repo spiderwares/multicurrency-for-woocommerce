@@ -71,8 +71,8 @@ if ( ! class_exists( 'MCWC_Exchange_Rate' ) ) :
                 return;
             endif;
 
-			$default_currency = isset( $_POST['default_currency'] ) ? sanitize_text_field( $_POST['default_currency'] ) : '';
-			$other_currencies = isset( $_POST['other_currencies'] ) ? explode( ',', sanitize_text_field( $_POST['other_currencies'] ) ) : [];
+			$default_currency = isset( $_POST['default_currency'] ) ? sanitize_text_field( wp_unslash( $_POST['default_currency'] ) ) : '';
+			$other_currencies = isset( $_POST['other_currencies'] ) ? explode( ',', sanitize_text_field( wp_unslash( $_POST['other_currencies'] ) ) ) : [];
 
 			if ( empty( $default_currency ) || empty( $other_currencies ) ) :
 				wp_send_json_error( [ 'message' => 'Missing currency data' ] );

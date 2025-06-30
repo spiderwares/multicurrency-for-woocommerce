@@ -183,11 +183,47 @@ function mcwc_currency_options( $selected = '' ) {
     return $output;
 }
 
+/**
+ * Retrieves the currently selected currency from session or cookie.
+ *
+ * This function checks plugin settings to determine whether to use session or cookie
+ * for currency persistence and returns the selected currency code.
+ *
+ * @return string|null Selected currency code (e.g., 'USD', 'INR') or null if not set.
+ */
 function mcwc_get_selected_currency() {
     $settings = get_option( 'mcwc_settings', [] );
 
     if ( isset( $settings['use_session'] ) && $settings['use_session'] === 'yes' ) {
-        return isset( $_SESSION['mcwc_selected_currency'] ) ? $_SESSION['mcwc_selected_currency'] : null;
+        return isset( $_SESSION['mcwc_selected_currency'] ) ? sanitize_text_field( wp_unslash( $_SESSION['mcwc_selected_currency'] ) ): null;
     }
-    return $set = isset( $_COOKIE['mcwc_selected_currency'] ) ? sanitize_text_field( $_COOKIE['mcwc_selected_currency'] ) : null;
+    return $set = isset( $_COOKIE['mcwc_selected_currency'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['mcwc_selected_currency'] ) ) : get_woocommerce_currency();
+}
+
+
+/**
+ * Sets the selected currency for the session or cookie.
+ *
+ * This function is used to override the current currency based on user selection
+ * or programmatic triggers such as payment method selection.
+ * It supports both session-based and cookie-based persistence.
+ *
+ * @param string $currency The currency code to switch to (e.g., 'USD', 'EUR').
+ * @return void
+ */
+function mcwc_switch_currency( $currency ) {
+    if ( ! $currency ) :
+        return;
+    endif;
+
+    $settings = get_option( 'mcwc_settings', [] );
+
+    if ( isset( $settings['use_session'] ) && $settings['use_session'] === 'yes' ) :
+        if ( ! session_id() ) :
+            session_start();
+        endif;
+        $_SESSION['mcwc_selected_currency'] = $currency;
+    else :
+        setcookie( 'mcwc_selected_currency', $currency, time() + (30 * DAY_IN_SECONDS), COOKIEPATH, COOKIE_DOMAIN );
+    endif;
 }

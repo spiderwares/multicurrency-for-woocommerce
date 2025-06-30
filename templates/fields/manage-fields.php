@@ -1,8 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) :
     exit; 
-endif;
-?>
+endif; ?>
 
 <?php foreach ( $fields as $field_Key => $field ) : 
     $field_Val  = isset( $options[ $field_Key ] ) ? $options[ $field_Key ] : $field['default']; 
