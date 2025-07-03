@@ -105,7 +105,8 @@ if ( ! class_exists( 'MCWC_Variable_Product_Metabox' ) ) :
 			endif;
 
 			$post_key = 'variation_' . $variation_id;
-			$data     = isset( $_POST[ $post_key ] ) ? $_POST[ $post_key ] : array();
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$data     = isset( $_POST[ $post_key ] ) ? wp_unslash( $_POST[ $post_key ] ) : array();
 
 			// Save regular prices.
 			if ( isset( $data['_regular_price_mcwc'] ) && is_array( $data['_regular_price_mcwc'] ) ) :

@@ -44,7 +44,7 @@ if ( ! class_exists( 'MCWC_install' ) ) :
             $action_links = array(
                 'settings' => sprintf(
                     '<a href="%s" aria-label="%s">%s</a>',
-                    admin_url( 'admin.php?page=jthemes-mcwc' ),
+                    admin_url( 'admin.php?page=mcwc' ),
                     esc_attr__( 'Settings', 'multicurrency-for-woocommerce' ),
                     esc_html__( 'Settings', 'multicurrency-for-woocommerce' )
                 ),

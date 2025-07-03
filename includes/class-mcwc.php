@@ -90,6 +90,7 @@ if ( ! class_exists( 'MCWC' ) ) :
          * @access private
          */
         public function includes() {
+            require_once MCWC_PATH . 'includes/admin/dashboard/class-jthemes-dashboard.php';
             if( is_admin() ) :
                 $this->includes_admin();
            else :
@@ -110,7 +111,6 @@ if ( ! class_exists( 'MCWC' ) ) :
          * @access private
          */
         public function includes_admin() {
-            require_once MCWC_PATH . 'includes/admin/dashboard/class-jthemes-dashboard.php';
             require_once MCWC_PATH . 'includes/admin/settings/class-mcwc-admin-menu.php';
             require_once MCWC_PATH . 'includes/admin/class-mcwc-simple-product-metabox.php';
             require_once MCWC_PATH . 'includes/admin/class-mcwc-variable-product-metabox.php';

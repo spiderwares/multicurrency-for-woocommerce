@@ -72,11 +72,11 @@ if ( ! class_exists( 'MCWC_Admin_Menu' ) ) :
 		 */
         public function admin_menu() {
             add_submenu_page( 
-                'jthemes', 
+                'mcwc_jthemes', 
                 esc_html__( 'Jthemes Multi Currency', 'multicurrency-for-woocommerce' ), 
                 esc_html__( 'Multi Currency', 'multicurrency-for-woocommerce' ), 
                 'manage_options', 
-                'jthemes-mcwc', 
+                'mcwc', 
                 [ $this,'admin_menu_content' ] 
             );
         }

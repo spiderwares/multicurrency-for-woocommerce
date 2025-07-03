@@ -224,23 +224,56 @@ if ( ! class_exists( 'MCWC_Switcher_Sidebar' ) ) :
                 return false;
             endif;
 
+            // Safe evaluation of conditional tags
             if ( ! empty( $this->settings['conditional_tags'] ) ) :
-                $expr = trim( $this->settings['conditional_tags'] );
+                $allowed_tags = [
+                    'is_front_page',
+                    'is_home',
+                    'is_single',
+                    'is_page',
+                    'is_singular',
+                    'is_product',
+                    'is_cart',
+                    'is_checkout',
+                    'is_shop',
+                    'is_category',
+                    'is_tag',
+                    'is_archive',
+                    'is_search',
+                    'is_404',
+                ];
 
-                // Disallow dangerous code
-                if ( preg_match( '/[^a-zA-Z0-9_\s\(\)\[\],!\'"]/', $expr ) ) :
+                $raw_exprs = explode( '||', $this->settings['conditional_tags'] );
+
+                $valid_match = false;
+
+                foreach ( $raw_exprs as $tag ) :
+                    $tag = trim( $tag );
+
+                    if ( preg_match( '/^([a-zA-Z0-9_]+)\((.*?)\)$/', $tag, $matches ) ) :
+                        $func  = $matches[1];
+                        $param = trim( $matches[2], '\'" ' );
+                    else :
+                        $func  = $tag;
+                        $param = null;
+                    endif;
+
+                    if ( in_array( $func, $allowed_tags, true ) && function_exists( $func ) ) :
+                        if ( is_null( $param ) && $func() ) :
+                            $valid_match = true;
+                            break;
+                        endif;
+
+                        if ( ! is_null( $param ) && $func( $param ) ) :
+                            $valid_match = true;
+                            break;
+                        endif;
+                    endif;
+                endforeach;
+
+                if ( ! $valid_match ) :
                     return false;
                 endif;
-
-                try {
-                    // Eval safe expression
-                    $result = eval( 'return (' . $expr . ') ? true : false;' );
-                    if ( ! $result ) :
-                        return false;
-                    endif;
-                } catch ( \Throwable $e ) {
-                    return false;
-                }
             endif;
 
             return true;

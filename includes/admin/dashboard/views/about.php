@@ -11,8 +11,5 @@ defined( 'ABSPATH' ) || exit; ?>
             <a href="https://jthemes.com/" target="_blank">https://jthemes.com</a>
         </p>
     </div>
-</div>
-
-<div class="card">
-    <h2 class="title"><?php esc_html_e( 'Our WordPress.org Plugins', 'multicurrency-for-woocommerce' ) ?></h2>
+    <div class="wp-list-table widefat jthemes_plugin_kit"></div>
 </div>

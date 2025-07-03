@@ -26,7 +26,7 @@ if ( ! defined( 'MCWC_BASENAME' ) ) :
 endif;
 
 if ( ! defined( 'MCWC_VERSION' ) ) :
-    define( 'MCWC_VERSION', time() ); // Define the plugin version.
+    define( 'MCWC_VERSION', '1.0.0' ); // Define the plugin version.
 endif;
 
 if ( ! defined( 'MCWC_PATH' ) ) :

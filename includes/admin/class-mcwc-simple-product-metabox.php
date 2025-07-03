@@ -74,12 +74,14 @@ if ( ! class_exists( 'MCWC_Simple_Product_Metabox' ) ) :
 
             // Sanitize and save regular prices
             if ( isset( $_POST['_regular_price_mcwc'] ) && is_array( $_POST['_regular_price_mcwc'] ) ) :
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                 $regular_prices = array_map( 'wc_format_decimal', wp_unslash( $_POST['_regular_price_mcwc'] ) );
                 $product->update_meta_data( '_regular_price_mcwc', wp_json_encode( $regular_prices ) );
             endif;
 
             // Sanitize and save sale prices
             if ( isset( $_POST['_sale_price_mcwc'] ) && is_array( $_POST['_sale_price_mcwc'] ) ) :
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                 $sale_prices = array_map( 'wc_format_decimal', wp_unslash( $_POST['_sale_price_mcwc'] ));
                 $product->update_meta_data( '_sale_price_mcwc', wp_json_encode( $sale_prices ) );
             endif;

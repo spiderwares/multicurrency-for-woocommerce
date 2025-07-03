@@ -39,41 +39,41 @@ defined( 'ABSPATH' ) || exit; ?>
     <div class="jthemes_settings_page_nav">
         <h2 class="nav-tab-wrapper">
             <!-- General settings tab -->
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=general' ) ); ?>" 
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=mcwc&tab=general' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'general' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/general.svg'); ?>" />
                 <?php esc_html_e( 'General', 'multicurrency-for-woocommerce' ); ?>
             </a>
 
             <!-- Location settings tab -->
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=location' ) ); ?>" 
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=mcwc&tab=location' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'location' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/location.svg'); ?>" />
                 <?php esc_html_e( 'Location', 'multicurrency-for-woocommerce' ); ?>
             </a>
 
             <!-- Checkout settings tab -->
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=checkout' ) ); ?>" 
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=mcwc&tab=checkout' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'checkout' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/checkout.svg'); ?>" />
                 <?php esc_html_e( 'Checkout', 'multicurrency-for-woocommerce' ); ?>
             </a>
 
             <!-- Design settings tab -->
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=design' ) ); ?>" 
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=mcwc&tab=design' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'design' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/design.svg'); ?>" />
                 <?php esc_html_e( 'Design', 'multicurrency-for-woocommerce' ); ?>
             </a>
 
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=visibility' ) ); ?>" 
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=mcwc&tab=visibility' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'visibility' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/visibility.svg'); ?>" />
                 <?php esc_html_e( 'Visibility', 'multicurrency-for-woocommerce' ); ?>
             </a>
             
             <!-- Update settings tab -->
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=jthemes-mcwc&tab=update' ) ); ?>" 
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=mcwc&tab=update' ) ); ?>" 
                class="<?php echo esc_attr( $active_tab === 'update' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
                 <img src="<?php echo esc_url( MCWC_URL . 'assets/img/admin/update.svg'); ?>" />
                 <?php esc_html_e( 'Update', 'multicurrency-for-woocommerce' ); ?>

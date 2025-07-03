@@ -33,6 +33,7 @@ defined( 'ABSPATH' ) || exit;
                 </td>
                 <td>
 					<select name="<?php echo esc_attr( $field['name'] ); ?>[currency][]" class="mcwc-currency-select mcwc-full-width">
+                        <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<?php echo mcwc_currency_options(); ?>
 					</select>
 				</td>
@@ -65,6 +66,7 @@ defined( 'ABSPATH' ) || exit;
                         </td>
                         <td>
                             <select name="<?php echo esc_attr( $field['name'] ); ?>[currency][]" class="mcwc-currency-select mcwc-full-width">
+                                <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 <?php echo mcwc_currency_options( $item['currency'] ); ?>
                             </select>
                         </td>
@@ -95,7 +97,7 @@ defined( 'ABSPATH' ) || exit;
                     <button class="mcwc-update-all-rates mcwc-admin-button">
                         <span><?php esc_html_e( 'Update rates', 'multicurrency-for-woocommerce' ); ?></span>
                     </button>
-
+                    
                     <img src="<?php echo esc_url( admin_url( 'images/spinner.gif' ) ); ?>" class="mcwc-spinner" />
 
                     <button class="mcwc-add-repeater-row mcwc-admin-button">

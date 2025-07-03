@@ -57,7 +57,7 @@ if( ! class_exists( 'MCWC_Admin_Settings' ) ):
                         'json_override'     => esc_html__( 'Override Prices via JSON (for Polylang or Custom Cache Handling)', 'multicurrency-for-woocommerce' ),
                     ),
                     'desc'        => esc_html__(
-                        'Enable this option if your site uses a page caching plugin (e.g., WP Super Cache, W3 Total Cache, WP Rocket) and the selected currency is not retained after switching. Choose "AJAX" to reload prices dynamically, or "JSON" if you are using Polylang or other tools that require static content rewriting.',
+                        'Enable this option if your website uses a page caching system and the selected currency is not retained after switching. Choose "AJAX" to dynamically reload prices after currency change, or "JSON" if your site requires static content rewriting for multilingual or caching compatibility.',
                         'multicurrency-for-woocommerce'
                     ),
                 ),
