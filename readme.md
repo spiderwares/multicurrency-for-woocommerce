@@ -1,4 +1,4 @@
-# Multi Currency for WooCommerce
+# MultiCurrency for WooCommerce
 
 **Contributors:** jthemesstudio
 **Tags:** WooCommerce, multi-currency, currency switcher, currency converter, ecommerce
@@ -11,7 +11,7 @@ Add unlimited currencies to WooCommerce with a switcher, custom rates, and full 
 
 ## Presentation
 
-[**Documentation**](https://plugins.jthemesstudio.com/docs/multicurrency-for-woocommerce/)
+[**Documentation**](https://documentation.jthemesstudio.com/multi-currency-for-woocommerce/documents/getting-started/introduction/)
 
 ## Key Features
 

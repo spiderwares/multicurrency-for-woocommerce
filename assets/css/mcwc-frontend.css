@@ -151,14 +151,65 @@
 
 /*************************************************************/
 
-.mcwc-currency-symbol-style.mcwc-sidebar .mcwc-list-currencies .mcwc-currency-symbol{
-    font-size:16px;
+.mcwc-single-dropdown-wrapper {
+    position: relative;
+    width: fit-content;
+    font-family: sans-serif;
 }
 
-.mcwc-currency-symbol-style.mcwc-sidebar .mcwc-currency {
-    border-radius: 8px;
+.mcwc-dropdown-toggle {
+    padding: 10px 20px;
+    margin: 0px 0px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #cccccc54;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.mcwc-right.mcwc-currency-symbol-style.mcwc-bottom.mcwc-sidebar {
-    right: -135px;
+.mcwc-dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.mcwc-single-dropdown-wrapper:hover .mcwc-dropdown-list {
+    display: block;
+}
+
+.mcwc-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s;
+}
+
+.mcwc-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.mcwc-dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.mcwc-dropdown-item.mcwc-active {
+    background-color: #e0f7fa;
+    font-weight: bold;
 }

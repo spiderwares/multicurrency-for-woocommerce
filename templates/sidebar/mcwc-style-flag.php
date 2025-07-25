@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) :
 	exit; // Prevent direct access for security reasons.
 endif; ?>
 
-<div class="mcwc-bottom mcwc-sidebar">
+<div class="mcwc-<?php echo esc_attr( $position ); ?> mcwc-bottom mcwc-sidebar">
     <div class="mcwc-list-currencies">
         <div class="mcwc-title"><?php echo esc_html( $title ); ?></div>
         <div class="mcwc-currency-switcher">

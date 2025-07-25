@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Multi Currency for WooCommerce
+ * Plugin Name:       MultiCurrency for WooCommerce
  * Description:       Add multi-currency support to your WooCommerce store. Automatically convert prices and allow customers to switch currencies with ease.
  * Version:           1.0.0
  * Requires at least: 5.2
